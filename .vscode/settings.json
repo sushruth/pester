@@ -1,5 +1,6 @@
 {
 	"go.useLanguageServer": true,
 	"editor.formatOnSave": true,
-	"prettier.tabWidth": 2
+	"prettier.tabWidth": 2,
+	"typescript.tsdk": "node_modules\\typescript\\lib"
 }
