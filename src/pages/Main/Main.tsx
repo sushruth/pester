@@ -1,11 +1,17 @@
-import { Checkbox, CheckboxProps, Flex, Header } from '@stardust-ui/react'
+import {
+	Checkbox,
+	CheckboxProps,
+	ComponentEventHandler,
+	Flex,
+	Header
+} from '@stardust-ui/react'
 import React, { useCallback, useContext } from 'react'
 import { ThemeContext } from '../../shared/theme/theme-context'
 
 export const Main: React.FC = () => {
 	const themeContext = useContext(ThemeContext)
-	const setTheme: CheckboxProps['onClick'] = useCallback(
-		(_, props?: CheckboxProps) => {
+	const setTheme = useCallback<ComponentEventHandler<CheckboxProps>>(
+		(event, props?: CheckboxProps) => {
 			console.log('Changed - ', props, themeContext)
 			if (props && themeContext) {
 				props.checked ? themeContext.setDark() : themeContext.setBright()

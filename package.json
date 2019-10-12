@@ -12,10 +12,9 @@
 		"react-dom": "16.10.2",
 		"react-helmet-async": "^1.0.3",
 		"react-scripts": "3.2.0",
-		"typescript": "beta"
+		"typescript": "^3.7.0-beta"
 	},
 	"scripts": {
-		"dev": "craco start",
 		"build": "craco build",
 		"test": "craco test",
 		"prestart": "hostile set 127.0.0.1 pester.now.sh",
@@ -34,6 +33,7 @@
 		"@babel/plugin-proposal-optional-chaining": "^7.6.0",
 		"@craco/craco": "^5.5.0",
 		"@now/node": "1.0.1",
+		"@testing-library/react": "^9.3.0",
 		"hostile": "^1.3.2"
 	}
 }
