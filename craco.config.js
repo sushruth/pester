@@ -4,11 +4,25 @@ module.exports = {
 	},
 	jest: {
 		configure: {
+			collectCoverage: true,
 			collectCoverageFrom: [
-				'**/*.{js,jsx}',
+				'**/*.{ts,tsx,}',
 				'!**/node_modules/**',
-				'!**/vendor/**'
-			]
+				'!**/vendor/**',
+				'!**/test-helpers/**',
+				'!src/index.tsx',
+				'!src/serviceWorker.js'
+			],
+			coverageDirectory: './coverage',
+			coverageReporters: ['text', 'html'],
+			coverageThreshold: {
+				global: {
+					branches: 80,
+					functions: 80,
+					lines: 80,
+					statements: -10
+				}
+			}
 		}
 	}
 }

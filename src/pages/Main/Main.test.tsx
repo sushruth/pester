@@ -1,14 +1,51 @@
-import { render } from '@testing-library/react'
-import React from 'react'
+import { fireEvent, render, RenderResult } from '@testing-library/react'
+import * as React from 'react'
 import { TestSandbox } from '../../shared/test-helpers/TestSandbox'
+import { ThemeContextType } from '../../shared/theme/theme-context'
 import { Main } from './Main'
 
 describe('Main', () => {
-	it('Renders without crashing', () => {
+	it('renders without crashing', () => {
 		render(
 			<TestSandbox>
 				<Main />
 			</TestSandbox>
 		)
+	})
+
+	describe('functionality', () => {
+		let result: RenderResult
+		let mockContext: jest.SpyInstance
+
+		let setDark = jest.fn()
+		let setBright = jest.fn()
+
+		beforeEach(() => {
+			mockContext = jest.spyOn(React, 'useContext').mockImplementation(
+				(): ThemeContextType => ({
+					name: 'teams',
+					setDark,
+					setBright
+				})
+			)
+			result = render(
+				<TestSandbox>
+					<Main />
+				</TestSandbox>
+			)
+		})
+
+		afterEach(() => {
+			mockContext.mockClear()
+		})
+
+		it('can set to bright theme', async () => {
+			const toggle = result.container.querySelector('.themeToggleGlobal')
+			expect(toggle).not.toBeNull()
+
+			toggle && fireEvent.click(toggle)
+
+			expect(setBright).toHaveBeenCalled()
+		})
 	})
 })

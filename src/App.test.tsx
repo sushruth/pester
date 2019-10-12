@@ -3,7 +3,7 @@ import { App } from './App'
 import React from 'react'
 
 describe('App', () => {
-	it('Renders without crashing', () => {
+	it('renders without crashing', () => {
 		render(<App />)
 	})
 })

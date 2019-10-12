@@ -46,6 +46,7 @@ export const Main: React.FC = () => {
 						onChange={setTheme}
 						toggle
 						defaultChecked
+						className="themeToggleGlobal"
 						title="Dark mode"
 					/>
 				</Flex.Item>

@@ -3,13 +3,13 @@ import React, { useCallback, useMemo, useState } from 'react'
 
 type ThemeType = keyof typeof themes | undefined
 
-type ThemeContext = {
+export type ThemeContextType = {
 	name: ThemeType
 	setDark: () => void
 	setBright: () => void
 }
 
-export const ThemeContext = React.createContext<ThemeContext | undefined>(
+export const ThemeContext = React.createContext<ThemeContextType | undefined>(
 	undefined
 )
 
