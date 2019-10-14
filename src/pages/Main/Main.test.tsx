@@ -1,7 +1,8 @@
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 import * as React from 'react'
 import { TestSandbox } from '../../shared/test-helpers/TestSandbox'
-import { ThemeContextType } from '../../shared/theme/theme-context'
+import { ThemeContextType } from '../../shared/theme/ThemeContext'
+import { wait } from '../../shared/test-helpers/wait'
 import { Main } from './Main'
 
 describe('Main', () => {
@@ -45,7 +46,19 @@ describe('Main', () => {
 
 			toggle && fireEvent.click(toggle)
 
-			// expect(setBright).toHaveBeenCalled() - TODO
+			expect(setBright).toHaveBeenCalled()
+		})
+
+		it('can set to bright theme', async () => {
+			const toggle = result.container.querySelector('.themeToggleGlobal')
+			expect(toggle).not.toBeNull()
+
+			toggle && fireEvent.click(toggle)
+			await wait(10)
+			toggle && fireEvent.click(toggle)
+			await wait(10)
+
+			expect(setBright).toHaveBeenCalled()
 		})
 	})
 })
