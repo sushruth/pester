@@ -6,15 +6,16 @@ import {
 	Header
 } from '@stardust-ui/react'
 import React, { useCallback, useContext } from 'react'
-import { ThemeContext } from '../../shared/theme/theme-context'
+import { ThemeContext } from '../../shared/theme/ThemeContext'
 
 export const Main: React.FC = () => {
 	const themeContext = useContext(ThemeContext)
 	const setTheme = useCallback<ComponentEventHandler<CheckboxProps>>(
-		(event, props?: CheckboxProps) => {
-			console.log('Changed - ', props, themeContext)
-			if (props && themeContext) {
-				props.checked ? themeContext.setDark() : themeContext.setBright()
+		event => {
+			if (themeContext) {
+				;(event.currentTarget as HTMLInputElement).checked
+					? themeContext.setDark()
+					: themeContext.setBright()
 			}
 		},
 		[themeContext]
@@ -43,7 +44,7 @@ export const Main: React.FC = () => {
 				</Flex.Item>
 				<Flex.Item shrink>
 					<Checkbox
-						onChange={setTheme}
+						onClick={setTheme}
 						toggle
 						defaultChecked
 						className="themeToggleGlobal"

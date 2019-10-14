@@ -16,7 +16,8 @@
 	},
 	"scripts": {
 		"build": "craco build",
-		"test": "craco test",
+		"test": "craco test --watchAll=false",
+		"test:sw": "node --inspect-brk .\\node_modules\\@craco\\craco\\bin\\craco.js test --runInBand",
 		"prestart": "hostile set 127.0.0.1 pester.now.sh",
 		"start": "now dev -l 127.0.0.1:7000"
 	},
