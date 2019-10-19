@@ -1,13 +1,6 @@
-import {
-	Checkbox,
-	CheckboxProps,
-	ComponentEventHandler,
-	Flex,
-	Header
-} from '@stardust-ui/react'
+import { Flex, Header } from '@stardust-ui/react'
 import * as React from 'react'
-import { useCallback } from 'react'
-import { useStores } from '../shared/state/stores'
+import { ThemeToggle } from './ThemeToggle'
 
 const styles = {
 	description: {
@@ -16,18 +9,6 @@ const styles = {
 }
 
 export const PageHeader: React.FC = () => {
-	const { theme } = useStores()
-
-	const setTheme = useCallback<ComponentEventHandler<CheckboxProps>>(
-		event => {
-			event.stopPropagation()
-			event.currentTarget.getAttribute('aria-checked') === 'false'
-				? theme.setDark()
-				: theme.setBright()
-		},
-		[theme]
-	)
-
 	return (
 		<header>
 			<Flex vAlign="center">
@@ -42,13 +23,7 @@ export const PageHeader: React.FC = () => {
 					/>
 				</Flex.Item>
 				<Flex.Item shrink>
-					<Checkbox
-						onClick={setTheme}
-						toggle
-						defaultChecked
-						className="themeToggleGlobal"
-						title="Dark mode"
-					/>
+					<ThemeToggle />
 				</Flex.Item>
 			</Flex>
 		</header>
