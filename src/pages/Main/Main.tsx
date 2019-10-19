@@ -13,7 +13,7 @@ export const Main: React.FC = () => {
 	const setTheme = useCallback<ComponentEventHandler<CheckboxProps>>(
 		event => {
 			if (themeContext) {
-				;(event.currentTarget as HTMLInputElement).checked
+				event.currentTarget.getAttribute('aria-checked') === 'false'
 					? themeContext.setDark()
 					: themeContext.setBright()
 			}
