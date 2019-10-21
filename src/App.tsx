@@ -1,7 +1,9 @@
+import { ApolloProvider } from '@apollo/react-hooks'
 import { ICSSInJSStyle, Provider, themes } from '@stardust-ui/react'
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 import React, { useMemo } from 'react'
 import { Main } from './pages/Main/Main'
+import { client } from './shared/apollo.client'
 import { useStores } from './shared/state/stores'
 import { ThemeNames } from './shared/state/theme.store'
 
@@ -48,8 +50,10 @@ export const App: React.FC = observer(() => {
 	}, [name])
 
 	return (
-		<Provider styles={styles.provider} theme={themeVariable}>
-			<Main />
-		</Provider>
+		<ApolloProvider client={client}>
+			<Provider styles={styles.provider} theme={themeVariable}>
+				<Main />
+			</Provider>
+		</ApolloProvider>
 	)
 })

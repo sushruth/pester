@@ -1,0 +1,16 @@
+query SearchPackage($query: String!) {
+	searchPackage(query: $query) {
+		name
+		version
+		description
+		score {
+			final
+			detail {
+				quality
+				popularity
+				maintenance
+			}
+		}
+		searchScore
+	}
+}

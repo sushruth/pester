@@ -1,0 +1,16 @@
+overwrite: true
+schema: 'https://npms-graphql.glitch.me/'
+documents: 'src/**/*.graphql'
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      immutableTypes: true
+      typesPrefix: I
+      enumPrefix: false
+      withHooks: true
+      withComponent: false
+      withHOC: false

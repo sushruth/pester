@@ -1,0 +1,33 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+type Package {
+  name: String
+  version: String
+  description: String
+  score: Score
+  searchScore: Float
+}
+
+type Query {
+  searchPackage(query: String): [Package]
+}
+
+type Score {
+  final: Float
+  detail: ScoreDetail
+}
+
+type ScoreDetail {
+  quality: Float
+  popularity: Float
+  maintenance: Float
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+

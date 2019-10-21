@@ -1,42 +1,58 @@
 {
-  "name": "pester",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@stardust-ui/react": "^0.40.0",
-    "react": "16.10.2",
-    "react-dom": "16.10.2",
-    "react-scripts": "3.2.0",
-    "mobx": "5.14.0",
-    "mobx-react": "6.1.3"
-  },
-  "scripts": {
-    "build": "craco build",
-    "test": "craco test --watchAll=false",
-    "test:sw": "node --inspect-brk .\\node_modules\\@craco\\craco\\bin\\craco.js test --runInBand",
-    "prestart": "hostile set 127.0.0.1 pester.now.sh",
-    "start": "now dev -l 127.0.0.1:7000"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
-    "@craco/craco": "^5.5.0",
-    "@now/node": "1.0.1",
-    "@testing-library/react": "^9.3.0",
-    "hostile": "^1.3.2",
-    "typescript": "^3.7.0-beta",
-    "@types/jest": "24.0.18",
-    "@types/node": "12.7.12",
-    "@types/react": "16.9.5",
-    "@types/react-dom": "16.9.1",
-    "now": "16.3.1"
-  }
+	"name": "pester",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@apollo/react-common": "^3.1.3",
+		"@apollo/react-hooks": "^3.1.3",
+		"@stardust-ui/react": "^0.40.1",
+		"@types/lodash-es": "^4.17.3",
+		"apollo-cache-inmemory": "^1.6.3",
+		"apollo-client": "^2.6.4",
+		"apollo-link-http": "^1.5.16",
+		"graphql": "^14.5.8",
+		"graphql-tag": "^2.10.1",
+		"lodash-es": "^4.17.15",
+		"mobx": "5.14.0",
+		"mobx-react": "6.1.3",
+		"react": "16.10.2",
+		"react-dom": "16.10.2",
+		"react-scripts": "3.2.0",
+		"tslint": "^5.20.0"
+	},
+	"scripts": {
+		"build": "craco build",
+		"test": "craco test --watchAll=false",
+		"test:sw": "node --inspect-brk .\\node_modules\\@craco\\craco\\bin\\craco.js test --runInBand",
+		"start": "craco start",
+		"pregenerate": "get-graphql-schema https://npms-graphql.glitch.me/ > src/generated/schema.graphql",
+		"prestart": "graphql-codegen --config codegen.yml"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"@babel/plugin-proposal-optional-chaining": "^7.6.0",
+		"@craco/craco": "^5.5.0",
+		"@graphql-codegen/cli": "^1.8.1",
+		"@graphql-codegen/introspection": "1.8.1",
+		"@graphql-codegen/typescript": "1.8.1",
+		"@graphql-codegen/typescript-operations": "1.8.1",
+		"@graphql-codegen/typescript-react-apollo": "1.8.1",
+		"@now/node": "1.0.1",
+		"@testing-library/react": "^9.3.0",
+		"@types/jest": "24.0.18",
+		"@types/node": "12.7.12",
+		"@types/react": "16.9.5",
+		"@types/react-dom": "16.9.1",
+		"get-graphql-schema": "^2.1.2",
+		"now": "16.3.1",
+		"typescript": "^3.6.4"
+	}
 }

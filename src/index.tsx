@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom'
 import { App } from './App'
 import './index.css'
 
+if (process.env.NODE_ENV === 'development') {
+	window.localStorage.stardustDebug = true
+	window.localStorage.felaDevMode = true
+}
+
 // import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(<App />, document.getElementById('root'))
